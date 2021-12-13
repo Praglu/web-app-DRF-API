@@ -1,0 +1,6 @@
+Instrukcja do gita:
+
+- tworzymy nowy folder
+- w środku git bash
+$ git init
+$ git status - pokazuje status naszego repozytorium
