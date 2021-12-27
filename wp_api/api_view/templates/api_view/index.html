@@ -9,7 +9,16 @@
 <body>
     <form action="/" method="POST">
         {% csrf_token %}
-        {{ form }}
+        {% for field in form %}
+        <div class="form-control {% if field.errors %}errors{% endif %}">
+            {{ field.label_tag }}
+            <p></p>
+            {{ field }}
+            <p></p>
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+        <p></p>
         <button type="submit">Send</button>
     </form>
 </body>

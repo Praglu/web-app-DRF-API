@@ -1,19 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.views import View
+
 from .forms import ViewForm
 
-# Create your views here.
+class ViewView(View):
+    def get(self, request):
+        form = ViewForm()
 
-def index(request):
-    if request.method == "POST":
+        return render(request, "api_view/index.html", {
+            "form": form
+        })
+
+    def post(self, request):
         form = ViewForm(request.POST)
 
         if form.is_valid():
-            print(form.cleaned_data)
+            form.save()
             return HttpResponseRedirect("/thank-you")
 
-    form = ViewForm()
-    return render(request, "api_view/index.html", {
+        return render(request, "api_view/index.html", {
         "form": form
     })
 
