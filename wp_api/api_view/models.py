@@ -10,3 +10,8 @@ class ViewModel(models.Model):
     email = models.EmailField(null=False)
     password = models.TextField()
     
+    def full_name(self):
+        return f"{self.user_name} {self.user_surname}"
+
+    def __str__(self):
+        return self.full_name()
