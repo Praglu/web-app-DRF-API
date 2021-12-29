@@ -8,5 +8,20 @@
 </head>
 <body>
     {% block content %}{% endblock content %}
+    <p></p>
+    <li><a href="http://127.0.0.1:8000/api">If You want to see API</a></li>
+    {% block sidebar %}
+    <footer>
+    <ul class="sidebar-nav">
+    
+       {% if user.is_authenticated %}
+         <li>User: {{ user.get_username }}</li>
+         <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+       {% else %}
+         <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+       {% endif %}
+    </ul>
+    </footer>
+    {% endblock sidebar %}
 </body>
 </html>

@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect
 from django.views import View
 from rest_framework import viewsets
+from django.contrib.auth.decorators import login_required
 
 
 from .forms import ViewForm
