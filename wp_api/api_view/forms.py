@@ -31,3 +31,4 @@ class ViewForm(forms.ModelForm):
             self.add_error('confirm_password', 'Passwords does not match!')
 
         return cleaned_data
+
