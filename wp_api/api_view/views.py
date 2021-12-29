@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect
 from django.views import View
+from rest_framework import viewsets
+
 
 from .forms import ViewForm
+from .serializers import ViewSerializer
+from .models import ViewModel
+
 
 class ViewView(View):
     def get(self, request):
@@ -26,3 +31,8 @@ class ViewView(View):
 
 def thank_you(request):
     return render(request, "api_view/thank-you.html", {})
+
+
+class ViewModelView(viewsets.ModelViewSet):
+    serializer_class = ViewSerializer
+    queryset = ViewModel.objects.all()
