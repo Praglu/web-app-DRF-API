@@ -10,6 +10,10 @@ from .serializers import ViewSerializer
 from .models import ViewModel
 
 
+def homepage(request):
+    return render(request, "api_view/homepage.html")
+
+
 class ViewView(View):
     def get(self, request):
         form = ViewForm()
